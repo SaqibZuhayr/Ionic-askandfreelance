@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Question</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row>
+        <ion-button (click)="post_question('as')">Ask Question</ion-button>
+    </ion-row>
+
+    <ion-card *ngFor="let q of Question">
+            <ion-item *ngIf="q.user">
+            <ion-label>{{q.question.question}}</ion-label>
+            <ion-button  fill="outline" slot="end" [routerLink]="['/sidemenu-question/question/tabs/tab-question/answer/', q.question._id]"  >
+                View
+            </ion-button>
+        </ion-item>
+
+        <ion-card-content>
+            {{q.user.username}}
+        </ion-card-content>
+    </ion-card>
+</ion-content>

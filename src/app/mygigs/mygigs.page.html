@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Gigs</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row>
+        <ion-button (click)="addGigs()">Add Gigs</ion-button>
+    </ion-row>
+    <div *ngIf="userGigs"></div>
+    <ion-card *ngFor="let g of userGigs">
+        <ion-card-header>
+            <img src="{{g.photo}}">
+            <ion-card-subtitle>{{g.username}}</ion-card-subtitle>
+            <ion-card-title>{{g.title}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            {{g.description}}
+        </ion-card-content>
+    </ion-card>
+</ion-content>

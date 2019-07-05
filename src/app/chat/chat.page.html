@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button defaulthref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Chat</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content #content style="margin-top: 10px; margin-bottom: 10px;">
+    <div class="row" ngx-auto-scroll lock-y-offset="10" observe-attributes>
+        <div class="col-sm-12">
+            <div class="message-wrapper" *ngFor="let message of messageArray">
+                <div class="row">
+                    <ion-card class="row left" *ngIf="username != receivername && username != message.sendername">
+                        <div style="float: left" class="col-sm-12 chat-bubble left slide-left">
+                            <ion-card-content class="message">
+                                <p>{{message.body}}</p>
+                            </ion-card-content>
+                        </div>
+                        <hr/>
+                    </ion-card>
+                </div>
+                <div class="row">
+                    <ion-card class="row right" *ngIf="username === message.sendername">
+                        <div style="float: right" class="col-sm-12 chat-bubble right slide-right">
+                            <ion-card-content class="message">
+                                <p>{{message.body}}</p>
+                            </ion-card-content>
+                        </div>
+                        <hr/>
+                    </ion-card>
+                </div>
+            </div>
+            <div class="left col-sm-12" *ngIf="typing">
+                <ion-card class="chat-bubble left slide-left">
+                    <div class="message">
+                        <p>{{receivername}} is typing</p>
+                    </div>
+                </ion-card>
+            </div>
+
+        </div>
+    </div>
+</ion-content>
+<ion-footer no-border>
+    <ion-item text-wrap style="margin-top: 0px; !important">
+        <ion-textarea style="font-size: 16px;" id="msgInput" placeholder="Send a message ..." (keypress)="isTyping()"
+                      [(ngModel)]="message" style="width:inherit; height: 40px;"
+                      name="message">
+        </ion-textarea>
+        <ion-button size="large" ion-button clear item-end (click)="sendMessage()">
+            <img src="../assets/icon/send.png">
+        </ion-button>
+    </ion-item>
+</ion-footer>

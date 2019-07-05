@@ -1,0 +1,61 @@
+ion-card{
+  box-shadow: none !important;
+}
+.card-body {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.card-body {
+  border-radius: 15px;
+}
+
+.chat-body {
+  margin-top: 10px;
+  padding-top: 10px;
+  background-color: white;
+  border-radius: 15px;
+  height: 380px;
+  overflow-y: auto;
+}
+
+.chat-body-footer {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.chat-bubble {
+  border-radius: 10px;
+  display: inline-block;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 0px !important;
+  position: relative;
+  max-width: 80%;
+}
+
+.message {
+  font-size: 15px;
+}
+
+.chat-bubble.left {
+  background: #f1f0f0;
+  margin-left: 15px;
+}
+
+.chat-bubble.right {
+  background: #64b5f6;
+  margin-right: 7px;
+  color: white;
+}
+
+.message-wrapper {
+  position: relative;
+}

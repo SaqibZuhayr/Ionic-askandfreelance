@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button defaulthref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Answer</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="question">
+        <ion-card-header>
+            <ion-card-subtitle>{{question.askedBy}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-card-title>{{question.question}}</ion-card-title>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle>Post Answer</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <form [formGroup]="pAnswer" (ngSubmit)="panswer()">
+                <ion-item>
+                    <ion-textarea [rows]="3" formControlName="answer" type="text" placeholder="answer"></ion-textarea>
+                </ion-item>
+                <ion-button [disabled]="!pAnswer.valid" type="submit" shape="round" size="default" color="primary"
+                            expand="block"> Post Answer
+                </ion-button>
+            </form>
+        </ion-card-content>
+    </ion-card>
+    <div *ngIf="question">
+        <ion-card *ngFor="let a of question.answers">
+            <ion-grid>
+                <ion-row>
+                    <ion-col class="vertical-align" size="1">
+                        <ion-row>
+                            <img style="width: 30px;" class="image"
+                                 src="https://img.icons8.com/ios/30/000000/sort-up.png"
+                                 (click)="addScore(a.answer._id)">
+                        </ion-row>
+                        <ion-row class="text">
+                            <h6>{{a.score}}</h6>
+                        </ion-row>
+
+                        <ion-row>
+                            <img style="width: 30px;" src="https://img.icons8.com/color/30/000000/checkmark.png"
+                                 *ngIf="a.answer.approved; else notShow"
+                                 (click)="approveAnswer(a.answer._id, a.answer.user_id)">
+                        </ion-row>
+                        <ng-template #notShow>
+                            <ion-row>
+                                <img style="width: 30px;"
+                                     src="https://img.icons8.com/ios/30/000000/unchecked-checkbox.png">
+                            </ion-row>
+                        </ng-template>
+                        <ion-row (click)="subScore(a.answer._id)">
+                            <img style="width: 30px;" class="image"
+                                 src="https://img.icons8.com/ios/30/000000/sort-down.png">
+                        </ion-row>
+                    </ion-col>
+                    <ion-col>
+                        <ion-card-header>
+                            <ion-card-subtitle>{{a.answer.answeredBy}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content>
+                            <ion-card-title>{{a.answer.answer}}</ion-card-title>
+                        </ion-card-content>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </div>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button defaulthref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Add Gig</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="addForm" (ngSubmit)="gigForm()">
+        <ion-item>
+            <ion-input formControlName="gig_title" type="text" placeholder="Title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input formControlName="gig_description" type="text" placeholder="Description"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input formControlName="gig_rate" type="text" placeholder="Gig Rate"></ion-input>
+        </ion-item>
+        <ion-item>
+
+            <ion-button type="button" class="btn btn-primary" (click)="filepicker.click()">Add Image</ion-button>
+            <input type="file" #filepicker (change)="onImagePicked($event)"
+                   accept="image/*" style="visibility: hidden">
+            <!--<img  [src=]"imagePreview" [style.visibility]="visible" >-->
+        </ion-item>
+        <ion-button [disabled]="!addForm.valid" type="submit" shape="round" size="default" color="primary"
+                    expand="block">Post Gig
+        </ion-button>
+
+    </form>
+
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button defaulthref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>My Jobs</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-card *ngFor="let j of myjobs" class="card border-info mb-3 ">
+        <ion-card-content class="card ">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="card-text small question">{{j.category}}</p>
+                </div>
+                <div class="col-md-9">
+                    <p><a class="card-link">{{j.title}}</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11">
+                    <p>{{j.details}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10"></div>
+                <div class="col-sm-2 btn-margin">
+                    <ion-button routerLink="/sidemenu-question/jobs/tabsj/myjob-applied/{{j._id}}" type="button"
+                            class="btn btn-primary">
+                        View Applications
+                    </ion-button>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

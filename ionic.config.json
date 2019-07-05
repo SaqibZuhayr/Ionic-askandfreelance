@@ -1,5 +1,7 @@
 {
   "name": "ionic-askandf",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

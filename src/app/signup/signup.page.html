@@ -1,0 +1,35 @@
+<ion-content>
+    <ion-card color="primary" style="color: white" padding-bottom="10px;" padding-top="10px;">
+        <ion-title>Ask & Freelance</ion-title>
+    </ion-card>
+    <ion-card padding-top="10px;" style="color: #1e2023; background-color: #EDF5E0">
+        <ion-title>Signup Form</ion-title>
+        <ion-card-content>
+            <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                <ion-item>
+                    <ion-input formControlName="firstName" type="text" placeholder="First Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="lastName" type="text" placeholder="Last Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="username" type="text" placeholder="Username"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="password" type="text" placeholder="Password"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="repassword" type="text" placeholder="Repassword"></ion-input>
+                </ion-item>
+
+                <ion-button [disabled]="!signupForm.valid" type="submit" shape="round" size="default"
+                            color="primary"
+                            expand="block">Signup
+                </ion-button>
+            </form>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

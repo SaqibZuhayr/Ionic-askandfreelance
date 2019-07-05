@@ -1,0 +1,142 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button defaulthref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Freelance Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div *ngIf="orderRequests">
+        <ion-card>
+            <ion-card-header>Order Requests</ion-card-header>
+            <ion-card-content>
+                <ion-card class="card" *ngFor="let order of orderRequests">
+                    <ion-card-content>
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h6 class="card-link">
+                                    Title: {{order.title}}
+                                </h6>
+                            </div>
+                            <h6>Order Price: <a>{{order.amount}}</a></h6>
+                            <hr>
+                            <h6>Order Description: </h6>
+                            <p>{{order.description}}</p>
+                            <hr>
+                            <h6>Order Delivery Time: </h6>
+                            <p>{{order.time_limit}}</p>
+                            <hr>
+
+                            <ion-button type="button" color="success" (click)="accept(order._id)">Accept</ion-button>
+                            <ion-button type="button" color="danger" style="float: right" (click)="discard(order._id)">
+                                Discard
+                            </ion-button>
+                        </div>
+
+                    </ion-card-content>
+                </ion-card>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="pendingOrders">
+        <ion-card>
+            <ion-card-header>Pending Requests</ion-card-header>
+            <ion-card-content>
+                <ion-card class="card" *ngFor="let order of pendingOrders">
+                    <ion-card-content>
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h6 class="card-link">
+                                    Title: {{order.title}}
+                                </h6>
+                            </div>
+                            <h6>Order Price: <a>{{order.amount}}</a></h6>
+                            <hr>
+                            <h6>Order Description: </h6>
+                            <p>{{order.description}}</p>
+                            <hr>
+                            <h6>Order Delivery Time: </h6>
+                            <p>{{order.time_limit}}</p>
+                            <hr>
+                            <h6>Order Status: </h6>
+                            <p>{{order.completed}}</p>
+                            <hr>
+                            <ion-button type="button" color="success"
+                                        (click)="onComplete(order.userid,order._id,order.gig_id)">Complete
+                            </ion-button>
+                            <input type="file"
+                                   id="file"
+                                   (change)="handleFileInput($event.target.files)">
+                            <ion-button type="button" class="btn btn-primary" style="float: right" (click)="onCancel()">
+                                Cancel
+                                Order
+                            </ion-button>
+                        </div>
+
+                    </ion-card-content>
+                </ion-card>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="myorders">
+        <ion-card>
+            <ion-card-header>Buyer Order</ion-card-header>
+            <ion-card-content>
+                <ion-card class="card" *ngFor="let order of myorders.ordersAccepted">
+                    <ion-card-content>
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h6 class="card-link">
+                                    Title: {{order.title}}
+                                </h6>
+                            </div>
+                            <h6>Order Price: <a>{{order.amount}}</a></h6>
+                            <hr>
+                            <h6>Order Description: </h6>
+                            <p>{{order.description}}</p>
+                            <hr>
+                            <h6>Order Delivery Time: </h6>
+                            <p>{{order.time_limit}}</p>
+                            <hr>
+
+                            <ion-button type="button" color="success" (click)="accept(order._id)"
+                            >
+                                Payment
+                            </ion-button>
+                            <!--routerLink="/main/userprofile/payment/{{order.amount}}/{{order._id}}/{{order.gig_id}}"-->
+
+                        </div>
+
+                    </ion-card-content>
+                </ion-card>
+                <ion-card-header>Order Received</ion-card-header>
+                <ion-card class="card" *ngFor="let order of myorders.ordersReceived">
+                    <ion-card-content>
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h6 class="card-link">
+                                    Title: {{order.orderName}}
+                                </h6>
+                            </div>
+                            <a href="http://localhost:3000{{order.orderFile}}">
+                                <button (click)="download(order.orderFile)">Download</button>
+                            </a>
+                            <form [formGroup]="reviewForm" (ngSubmit)="reviewsForm(order.gig_id, order.orderid)">
+                                <ion-item>
+                                    <ion-input formControlName="review" type="text" placeholder="Review"></ion-input>
+                                </ion-item>
+                                <ion-button [disabled]="!reviewForm.valid" type="submit" shape="round" size="default"
+                                            color="primary"
+                                            expand="block">Review
+                                </ion-button>
+                            </form>
+                        </div>
+
+                    </ion-card-content>
+                </ion-card>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

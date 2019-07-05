@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button defaulthref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Post Question</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="qForm" (ngSubmit)="questionForm()">
+        <ion-item>
+            <ion-input formControlName="title" type="text" placeholder="Title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-textarea [rows]="6" formControlName="question" type="text" placeholder="Question"></ion-textarea>
+        </ion-item>
+        <ion-button [disabled]="!qForm.valid" type="submit" shape="round" size="default" color="primary"
+                    expand="block">Post Question
+        </ion-button>
+
+    </form>
+
+</ion-content>

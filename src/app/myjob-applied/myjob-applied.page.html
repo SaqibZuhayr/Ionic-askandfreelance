@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button defaulthref=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Applicants Applied</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let user of applicants">
+        <ion-card-title>
+            {{user.first_name}} Details:
+        </ion-card-title>
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Total Gigs :{{user.gigs.length}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Orders Completed : {{user.ordersAccepted.length}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Questions Posted : {{user.questions.length}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Answer Posted :{{user.answers.length}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Total Gigs :{{user.gigs.length}}</ion-label>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

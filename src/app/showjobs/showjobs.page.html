@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Jobs</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="jobs">
+    <ion-card *ngFor="let j of jobs">
+        <ion-item>
+            <ion-icon name="pin" slot="start"></ion-icon>
+            <ion-label>{{j.category}}</ion-label>
+            <ion-button fill="outline" slot="end"
+                        [routerLink]="['/sidemenu-question/jobs/tabsj/showjobs/job-details/', j._id]">
+                View
+            </ion-button>
+        </ion-item>
+
+        <ion-card-content>
+            {{j.details}}
+        </ion-card-content>
+    </ion-card>
+</ion-content>

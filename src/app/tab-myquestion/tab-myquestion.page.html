@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>My Question</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let q of Question">
+        <ion-item *ngIf="q.user.username">
+            <ion-label>{{q.question.question}}</ion-label>
+            <ion-button fill="outline" slot="end"
+                        [routerLink]="['/sidemenu-question/question/tabs/tab-myquestion/answer/', q._id]">
+                View
+            </ion-button>
+        </ion-item>
+
+        <ion-card-content>
+            {{q.user.username}}
+        </ion-card-content>
+    </ion-card>
+</ion-content>
